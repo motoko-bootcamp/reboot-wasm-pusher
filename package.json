@@ -1,6 +1,6 @@
 {
     "name": "reboot-wasm-pusher",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Registry for managing and deploying permissionless Modules in the Reboot Netowork",
     "main": "server.js",
     "scripts": {
