@@ -1,12 +1,18 @@
 # Reboot WASM Pusher
 
-You just need to install the package and execute it unsing:
+###Install:
+
+```
+npm install -g reboot-wasm-pusher
+```
+
+###Execute:
 
 ```
 wasmpusher
 ```
 
-The console will prompt you:
+###The console will prompt you the following:
 - Name of the module.
 - Version of the module.
 - Choose network. If you choose local it will ask for the canisterID of the local module registry.
