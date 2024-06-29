@@ -1,5 +1,5 @@
 {
-    "name": "reboot-module-manager",
+    "name": "reboot-wasm-pusher",
     "version": "0.0.1",
     "description": "Registry for managing and deploying permissionless Modules in the Reboot Netowork",
     "main": "server.js",
@@ -8,7 +8,7 @@
         "start": "node server.js"
     },
     "bin": {
-        "wasmpusher": "./server.js"
+        "wasmpusher": "./bin/server.js"
     },
     "type": "module",
     "keywords": [],

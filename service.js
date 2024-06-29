@@ -8,8 +8,8 @@ import {idlFactory} from './idl/service.did.js';
 import "dotenv/config.js";
 
 
-const registerModule = async (name, version, network, path) => {
-    const moduleRegistryActor = await createActor(process.env.CANISTERID, idlFactory, {
+const registerModule = async (name, version, network, canisterId, path) => {
+    const moduleRegistryActor = await createActor(canisterId, idlFactory, {
         agentOptions: { host: network, fetch },
     });
 

@@ -7,7 +7,5 @@ router.get('/', (req, res) => {
     registerWasm();
 })
 
-
-
 const _default = router;
 export { _default as default };

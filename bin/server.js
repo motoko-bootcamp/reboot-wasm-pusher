@@ -3,11 +3,12 @@
 import { program } from "commander";
 import inquirer from "inquirer";
 import chalk from "chalk";
+import "dotenv/config.js";
 
-import { registerModule } from './service.js';
+import { registerModule } from '../service.js';
 
 program
-  .version("1.0.0")
+  .version("0.0.1")
   .description("Wasm Pusher CLI")
   .action(async() => {
     let name = await inquirer.prompt([
@@ -47,6 +48,20 @@ program
       }
     ]);
 
+    let canisterId = '';
+
+    if(network.network === 'local') {
+      canisterId = await inquirer.prompt([
+        {
+          type: "input",
+          name: "Module manager canisterId",
+          message: "Enter the canister id of the local registry",
+        }
+      ]);
+    } else {
+      canisterId = process.env.CANISTERID;
+    };
+
     let wasm = await inquirer.prompt([
       {
         type: "input",
@@ -55,7 +70,7 @@ program
       }
     ]);
 
-      const res = await registerModule(name.name, version.version, network.network, wasm.wasm);
+      const res = await registerModule(name.name, version.version, network.network, canisterId, wasm.wasm);
     console.log("res", res);
       if(res.hasOwnProperty('ok')) {
         console.log(chalk.green('Successfully registered your module.'));
