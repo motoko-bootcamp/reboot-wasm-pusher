@@ -7,6 +7,9 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node server.js"
     },
+    "bin": {
+        "wasmpusher": "./server.js"
+    },
     "type": "module",
     "keywords": [],
     "author": "",
@@ -15,11 +18,14 @@
         "@dfinity/agent": "^1.4.0",
         "@dfinity/identity": "^1.4.0",
         "@dfinity/identity-secp256k1": "^1.4.0",
+        "@inquirer/confirm": "^3.1.11",
         "bip39": "^3.1.0",
+        "commander": "^12.1.0",
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
         "fs": "^0.0.1-security",
         "hdkey": "^2.1.0",
+        "inquirer": "^9.3.1",
         "node-fetch": "^3.3.2"
     }
 }
