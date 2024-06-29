@@ -8,17 +8,17 @@ import {idlFactory} from './idl/service.did.js';
 import "dotenv/config.js";
 
 
-const registerModule = async (name, version) => {
-    
+const registerModule = async (name, version, network, path) => {
     const moduleRegistryActor = await createActor(process.env.CANISTERID, idlFactory, {
-        agentOptions: { host: process.env.NETWORK, fetch },
+        agentOptions: { host: network, fetch },
     });
 
     try {
+        console.log("path", path);
         const res = await moduleRegistryActor.reboot_registry_registerModule(
             name,
             version,
-            getWasm()
+            getWasm(path)
         );
 
         return res;
@@ -28,7 +28,7 @@ const registerModule = async (name, version) => {
 };
 
 const createActor = async (canisterId, idl, options)=> {
-    const phrase = "ricardo ricardo ricardo ricardo ricardo ricardo ricardo ricardo ricardo ricardo ricardo ricardo";
+    const phrase = process.env.SEEDPHRASE;
     const identity = await identityFromSeed(phrase);
     const agent = new Agent.HttpAgent({ ...options?.agentOptions, identity });
     await agent.fetchRootKey();
@@ -40,9 +40,8 @@ const createActor = async (canisterId, idl, options)=> {
     });
 };
 
-const getWasm = () => {
-    const localPath = 
-        `${process.cwd()}/yourwasmhere/icrc_nft.wasm`;
+const getWasm = (path) => {
+    const localPath = path;
     const buffer = readFileSync(localPath);
     return [...new Uint8Array(buffer)];
 };
