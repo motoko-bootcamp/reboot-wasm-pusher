@@ -77,7 +77,7 @@ program
 
     let canisterId = '';
 
-    if(network.network === 'local') {
+    if(network.network === 'http://localhost:4943') {
       
       const canisterIdValidation = (canisterId) => {
         if (canisterId === "") {
